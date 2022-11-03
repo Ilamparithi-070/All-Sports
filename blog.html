@@ -11,6 +11,7 @@
 	<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,900" rel="stylesheet"
 		type="text/css">
 	<link href="fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 	<link rel="stylesheet" href="style.css">
 	<link rel="stylesheet" href="blog.css">
 
@@ -39,83 +40,70 @@
 			</div>
 		</header> <!-- .site-header -->
 
-		<main class="main-content">
+		<main class="main-content" ng-app="prwpst" ng-controller="pctrl">
 			<div class="fullwidth-block inner-content">
-				<div class="container">
+				<div class="container"  ng-init="cards=[
+				{
+					date:'27',
+					month:'Oct',
+					imglink:'https://images.indianexpress.com/2022/10/Untitled-design-24-2.jpg?resize=450,250',
+					title:'I can focus on chess and Barcelona on the Europa League: Magnus Carlsen trolls Barcelona after Champions League elimination',
+					content:'Barcelona was eliminated in the group stage of the Champions League for the second consecutive season on Wednesday even before a 3-0 loss at home against Bayern Munich in a game that proved meaningless after Inter Milan defeated Viktoria Plzen 4-0 in the earlier game.'
+				},
+				{
+					date:'26',
+					month:'Oct',
+					imglink:'https://images.indianexpress.com/2022/10/Novak-Djokovic.jpg',
+					title:'There are some signs for Aus Open: Novak Djokovic',
+					content:'Djokovic has won at Melbourne a staggering 9 times, and at 35 is chasing a record equalling all-time mark. I cant wait to go there, Ive overcome what happened this year and I just want to play tennis, its what I do best.'
+				},
+				{
+					date:'25',
+					month:'Oct',
+					imglink:'https://images.indianexpress.com/2022/10/Qatar-2022-FIFA-World-cup-1.jpg?resize=450,250',
+					title:'Schedule ahead of FIFA World Cup is crazy: Cesar Azpilicueta',
+					content:'Azpilicueta is expected to feature in Spain squad for the World Cup.'
+				},
+				{
+					date:'24',
+					month:'Oct',
+					imglink:'https://images.indianexpress.com/2022/10/Carlos-Alcaraz-.jpg?resize=450,250',
+					title:'Top-ranked Alcaraz cruises into Swiss Indoors quarterfinals',
+					content:'Two seeded players lost their first-round matches, with No. 7 Alex de Minaur falling 6-2, 7-5 against 25thranked teenager Holger Rune.'
+				}
+				]">
 					<div class="row">
 						<div class="col-md-7">
 							<div class="content">
 								<h2 class="entry-title">Articles</h2>
 
-								<div class="post">
+								<div class="post" ng-hide="ppost">
 									<div class="entry-date">
-										<div class="date">28</div>
-										<span class="month">July</span>
+										<div class="date">27</div>
+										<span class="month">Oct</span>
 									</div>
 									<div class="featured-image">
-										<img src="dummy/Band Name/0e51a0e0-10e8-463a-8985-cf295b716375.jpg" alt="">
+										<img src={{pctrl.img}} alt="not found">
 									</div>
-									<h2 class="entry-title"><a href="#">Recent posts title</a></h2>
-									<p>Here goes the content. Abcd efg hijk lamnajkdpoh kdfokdafgh ahfka aophag oghafg f
+									<h2 class="entry-title" ng-bind="pctrl.title"><a href="#">Recent posts title</a></h2>
+									<p ng-bind="pctrl.content">Here goes the content. Abcd efg hijk lamnajkdpoh kdfokdafgh ahfka aophag oghafg f
 										gofghdfhg goig a fghoafhgafg aogohgofdg ho ihji ug gy gyyg y gigi gg g tdxrex rc
 										ty t tvtg .</p>
 								</div>
-
+							<div ng-repeat="card in cards | orderBy:'-date'">
 								<div class="post">
 									<div class="entry-date">
-										<div class="date">28</div>
-										<span class="month">July</span>
+										<div class="date">{{card.date}}</div>
+										<span class="month">{{card.month}}</span>
 									</div>
 									<div class="featured-image">
-										<img src="dummy/Band Name/0e51a0e0-10e8-463a-8985-cf295b716375.jpg" alt="">
+										<img src={{card.imglink}} alt="">
 									</div>
-									<h2 class="entry-title"><a href="#">Recent posts title</a></h2>
-									<p>Here goes the content. Abcd efg hijk lamnajkdpoh kdfokdafgh ahfka aophag oghafg f
-										gofghdfhg goig a fghoafhgafg aogohgofdg ho ihji ug gy gyyg y gigi gg g tdxrex rc
-										ty t tvtg .</p>
+									<h2 class="entry-title"><a href="#">{{card.title}}</a></h2>
+									<p>{{card.content}}</p>
 								</div>
-
-								<div class="post">
-									<div class="entry-date">
-										<div class="date">28</div>
-										<span class="month">July</span>
-									</div>
-									<div class="featured-image">
-										<img src="dummy/Band Name/0e51a0e0-10e8-463a-8985-cf295b716375.jpg" alt="">
-									</div>
-									<h2 class="entry-title"><a href="#">Recent posts title</a></h2>
-									<p>Here goes the content. Abcd efg hijk lamnajkdpoh kdfokdafgh ahfka aophag oghafg f
-										gofghdfhg goig a fghoafhgafg aogohgofdg ho ihji ug gy gyyg y gigi gg g tdxrex rc
-										ty t tvtg .</p>
-								</div>
-
-								<div class="post">
-									<div class="entry-date">
-										<div class="date">28</div>
-										<span class="month">July</span>
-									</div>
-									<div class="featured-image">
-										<img src="dummy/Band Name/0e51a0e0-10e8-463a-8985-cf295b716375.jpg" alt="">
-									</div>
-									<h2 class="entry-title"><a href="#">Recent posts title</a></h2>
-									<p>Here goes the content. Abcd efg hijk lamnajkdpoh kdfokdafgh ahfka aophag oghafg f
-										gofghdfhg goig a fghoafhgafg aogohgofdg ho ihji ug gy gyyg y gigi gg g tdxrex rc
-										ty t tvtg .</p>
-								</div>
-
-								<div class="post">
-									<div class="entry-date">
-										<div class="date">28</div>
-										<span class="month">July</span>
-									</div>
-									<div class="featured-image">
-										<img src="dummy/Band Name/0e51a0e0-10e8-463a-8985-cf295b716375.jpg" alt="">
-									</div>
-									<h2 class="entry-title"><a href="#">Recent posts title</a></h2>
-									<p>Here goes the content. Abcd efg hijk lamnajkdpoh kdfokdafgh ahfka aophag oghafg f
-										gofghdfhg goig a fghoafhgafg aogohgofdg ho ihji ug gy gyyg y gigi gg g tdxrex rc
-										ty t tvtg .</p>
-								</div>
+							</div>
+								
 							</div>
 						</div>
 						<div class="col-md-4 col-md-push-1">
@@ -123,27 +111,36 @@
 								<div class="widget">
 									<h3 class="widget-title">Create a Post</h3>
 									
-									<div class="box" >
-										<form>
+									<div class="box">
+										<form name="createform" novalidate>
 											<div class="input-box">
-												<input id="user_post_title" type="text" name="" required="">
+												<input id="user_post_title" type="text" name="title" required="" ng-model="pctrl.title">
 												<label>Title</label>
+												<span style = "color:rgb(195, 0, 255)" ng-show = "createform.title.$dirty && createform.title.$invalid">
+													<span ng-show = "createform.title.$error.required">Title is required</span>
+												 </span>
 											</div>
 											<div class="input-box">
-												<input id="user-post-link" type="link" name="" required="">
+												<input id="user-post-link" type="link" name="imglink" required="" ng-model="pctrl.img">
 												<label>Image source</label>
+												<span style = "color:rgb(195, 0, 255)" ng-show = "createform.imglink.$dirty && createform.imglink.$invalid">
+													<span ng-show = "createform.imglink.$error.required">Add an image !</span>
+												 </span>
 											</div>
 											<div class="input-box">
 												<label>Content</label><br><br>
-												<textarea id="user-post-test" rows="15" cols="35" required="">
-												</textarea>																							
+												<textarea id="user-post-test" rows="15" cols="35"  name="content" required="" ng-model="pctrl.content" ng-minlength="20">
+												</textarea>	
+												<span style = "color:rgb(195, 0, 255)" ng-show = "createform.content.$dirty && createform.content.$invalid">
+													<span ng-show = "createform.content.$error.required">Need more content !</span>
+												 </span>																						
 											</div>								
-											<div class="center-button">
+											<div class="center-button">												
+												<input id="submit" type="submit" value="Preview" ng-click="show()">&nbsp;
 												<input id="submit" type="submit" name="" value="Post">
 											</div>
 										</form>
 									</div>
-										
 								</div>
 							</aside>
 						</div>
@@ -151,6 +148,16 @@
 				</div>
 			</div> <!-- .testimonial-section -->
 		</main> <!-- .main-content -->
+		<script type="text/javascript">
+			var app=angular.module('prwpst', []);
+			app.controller('pctrl', function($scope,$window) {
+				$scope.ppost=true;
+				$scope.show=function(){
+					//$window.alert("Button clicked");
+					$scope.ppost=!$scope.ppost;
+				}
+			  });
+		  </script>
 	</div> <!-- #site-content -->
 
 	<script src="js/jquery-1.11.1.min.js"></script>
